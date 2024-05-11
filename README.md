@@ -39,13 +39,19 @@ This project aims to analyze and visualize transaction data from PhonePe to gain
    ```bash
    git clone https://github.com/your-username/phonepe-pulse-data-viz.git
 Navigate to the project directory.
-bash
-Copy code
-cd phonepe-pulse-data-viz
-Install the required Python libraries using pip.
-bash
-Copy code
-pip install -r requirements.txt
+```bash
+        cd phonepe-pulse-data-viz
+        import pandas as pd
+        import mysql.connector as sql
+        import streamlit as st
+        import plotly.express as px
+        import os
+        import json
+        from streamlit_option_menu import option_menu
+        from PIL import Image
+        from git.repo.base import Repo
+ 
+
 Run the Streamlit app to launch the data visualization dashboard.
 bash
 Copy code
@@ -53,7 +59,7 @@ streamlit run app.py
 Contributing
 Contributions are welcome! Please fork this repository and create a pull request with your improvements.
 
-How to Run
+## How to Run
 To run the PhonePe Pulse Data Visualization and Exploration project:
 
 Make sure you have Python installed on your system.
