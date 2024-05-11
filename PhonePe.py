@@ -19,15 +19,92 @@ mycursor = mydb.cursor(buffered=True)
 #******************************************************************************************************************************************************************************************************************#
 # Function to display Home page content
 def home_page():
-    #heading 
-    st.markdown("<h1 style='text-align: center; color: purple;'><i>PhonePe Pulse Data Visualization </i></h1>", unsafe_allow_html=True)
-    #dividing the columns into two
-    colum1,colum2= st.columns([1,1.5],gap="large")
-    with colum1:
-        st.write("Analyze the Data and Explore the charts Check out the new PhonePe Pulse Insights on what the future holds for digit payments in India")
+       st.write(" ")
+       st.markdown("<h1 style='color: purple;'><center><i>Data Visualization of PhonePe Pulse Data</center></i></h1>",unsafe_allow_html=True)
+       colum1,colum2= st.columns([3,1.5],gap="large")
+       colum3,colum4= st.columns([2,2],gap="large")
+       st.write(" ")
+       st.write(" ")
+       with colum1:
+          st.write(" ")
+          st.write(" ")
+          st.write(" ")
+          st.write(" ")
+          img_url="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/1335557df2ab5ecab97e8c93/ssssss.jpg"
+          st.image(img_url,use_column_width=True)
+          st.markdown("""<h3 style='color: purple;'>About the PhonePe Data Visualization</h3>""",unsafe_allow_html=True)
+       with colum2:
+          st.write(" ")
+          st.write(" ")
+          st.write(" ")
+          st.write(" ")
+          st.write(" ")
+          st.write(" ")
+          st.write(" ")
+          st.markdown("##### Goals", unsafe_allow_html=True)
+          st.markdown("- **Geographical Analysis**")
+          #st.markdown("    - Visualize transactions geographically to identify regional trends, popular services in different areas, and target markets.")
+          st.markdown("- **Product Performance**")
+          #st.markdown("    - Evaluate the performance of PhonePe products (e.g., Wallet, Switch) through transaction data visualization.")
+          st.markdown("##### Strategies", unsafe_allow_html=True)
+          st.markdown("- **Map Visualization**")
+          #st.markdown("    - Visualize transactions geographically to identify regional trends, popular services in different areas, and target markets.")
+          st.markdown("- **Time Series Analysis**")
+       
+       with colum3: 
         
-    with colum2:
-       st.image(r"C:\Users\visha\OneDrive\Desktop\capstone_2\Screenshot 2024-05-10 180644.png")
+        st.markdown("""<h4>Goals:</h4>
+    <ul>
+        <li>
+            <strong>Geographical Analysis:</strong>
+            <ul>
+                <li>Visualize transactions geographically to identify regional trends, popular services in different areas, and target markets.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Product Performance:</strong>
+            <ul>
+                <li>Evaluate the performance of PhonePe products (e.g., Wallet, Switch) through transaction data visualization.</li>
+            </ul>
+        </li>
+    </ul>
+    <h4>Strategies:</h4>
+    <ul>
+        <li>
+            <strong>Data Visualization:</strong>
+            <ul>
+                <li>Utilize various data visualization techniques to represent transaction data effectively.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Exploratory Data Analysis:</strong>
+            <ul>
+                <li>Perform exploratory data analysis to uncover patterns, anomalies, and correlations in the data.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Insights Generation:</strong>
+            <ul>
+                <li>Generate actionable insights from the visualized data to inform business strategies and decision-making.</li>
+            </ul>
+        </li>
+    </ul>""", unsafe_allow_html=True)
+        with colum4:
+          st.markdown("""<h4>Tools and Technologies:</42>
+    <ul>
+        <br>
+        <li>Python libraries such as Pandas, Matplotlib, and Plotly for data processing and visualization.</li><br>
+        <li>Streamlit for creating interactive and user-friendly data visualizations.</li><br>
+        <li>HTML/CSS for custom styling and layout enhancements in the visualizations.</li>
+    </ul>
+    <br>
+    <h4>Expected Outcomes:</h4>
+    <ul>
+        <li>Comprehensive geographical analysis reports highlighting transaction patterns across different regions.</li>
+        <li>Performance metrics and visualizations for PhonePe products to assess their impact and popularity.</li>
+        <li>Actionable insights and recommendations based on data analysis to improve business strategies and product offerings.</li>
+    </ul>
+   """, unsafe_allow_html=True)
 #******************************************************************************************************************************************************************************************************************#
    
 #functions to display the chart exploration
@@ -177,7 +254,7 @@ def compare_state_page():
     col3,col4=st.columns([1,1],gap="small")
 
     with col1:
-        st.write("## :white[All Information in One Chart]")
+        st.write("## :violet[All Information in One Chart]")
         st.write(" ")
         st.write(" ")
 #selecting the year and quater to plot the chart
@@ -187,7 +264,7 @@ def compare_state_page():
 
     with col2:
        
-        mycursor.execute(f"select state,Year,Quater, sum(Transacion_count) as Total_Transactions_count, sum(Transacion_amount) as Total from agg_trans where Year = {Year} and Quater = {Quater} group by State order by Total desc limit 10")
+        mycursor.execute(f"select state,Year,Quater, sum(Transacion_count) as Total_Transactions_count, sum(Transacion_amount) as Total from agg_trans where  Year = {Year} and Quater = {Quater} group by State order by Total desc limit 10")
         df = pd.DataFrame(mycursor.fetchall(), columns=['state', 'Total_Transactions_count','Total','Year','Quater'])
 #plotting sunburst chart
         fig = px.sunburst(df, path=['state', 'Total_Transactions_count','Year','Quater'], values='Total',width=450)
@@ -195,8 +272,8 @@ def compare_state_page():
 
     with col3:
      
-     mycursor.execute(f"select State, sum(Registered_user) as Total_Users, sum(App_opens) as Total_Appopens from map_users where Year = {Year} and Quarter = {Quater} group by State order by Total_Users limit 10")
-     df = pd.DataFrame(mycursor.fetchall(), columns=['State', 'Total_Users','Total_Appopens'])
+     mycursor.execute(f"select State,Year, sum(Registered_user) as Total_Users, sum(App_opens) as Total_Appopens from map_users where Year = {Year} and Quarter = {Quater} group by State order by Total_Users limit 10")
+     df = pd.DataFrame(mycursor.fetchall(), columns=['State','Year', 'Total_Users','Total_Appopens'])
 
 # Create a line chart
      fig = px.line(df, x='State', y='Total_Users', title='Top 10 State ',
