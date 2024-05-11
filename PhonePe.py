@@ -20,7 +20,7 @@ mycursor = mydb.cursor(buffered=True)
 # Function to display Home page content
 def home_page():
        st.write(" ")
-       st.markdown("<h1 style='color: purple;'><center><i>Data Visualization of PhonePe Pulse Data</center></i></h1>",unsafe_allow_html=True)
+       st.markdown("<h1 style='color: purple;'><center><i>PhonePe Pulse Data visualization & Exploration</center></i></h1>",unsafe_allow_html=True)
        colum1,colum2= st.columns([3,1.5],gap="large")
        colum3,colum4= st.columns([2,2],gap="large")
        st.write(" ")
