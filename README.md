@@ -15,7 +15,7 @@ This project aims to visualize and explore data related to PhonePe transactions 
 ## Technologies Used
 
 - Python libraries: Pandas, Plotly, Streamlit, MySQL Connector
-- HTML/CSS for custom stylin
+- HTML/CSS for custom styling
 - Git for version control
 
 ## Installation
